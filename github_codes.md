@@ -1,13 +1,13 @@
-git clone <url>
-git add <filename>
-git add --all
-git commit -m "<message>"
-git commit -am "<message>"
-git status
-git push
-git push origin <branch name>
-git pull
-git branch
-git checkout <branch namme>
-git checkout -b <new branch name>
-git merge <branch name>
+git clone <url> <br>
+git add <filename> <br>
+git add --all <br>
+git commit -m "<message>" <br>
+git commit -am "<message>" <br>
+git status <br>
+git push <br>
+git push origin <branch name> <br>
+git pull <br> 
+git branch <br>
+git checkout <branch namme> <br>
+git checkout -b <new branch name> <br> 
+git merge <branch name> <br>
