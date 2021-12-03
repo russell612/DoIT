@@ -8,7 +8,9 @@ class Input: pass
 
 x = input()
 
-y = 10
+y = 11
+z = 222
+
 
 filehandler = open('data.txt','wb')
 pickle.dump(x, filehandler)
