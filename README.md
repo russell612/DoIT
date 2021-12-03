@@ -19,6 +19,10 @@ Currently we have not started to code. Stay tuned for updates.
 Python - Coding Language <br>
 Ttinker - GUI <br>
 Pickle - Current Storage Solution <br>
+Node.js - Proposed Online Data Storage Framework <br>
+SQL - Tentative Online Data Storage Solution <br>
+Django - Proposed Web App Framework <br>
+Javascript - Proposed Web App Framework 2 <br>
 
 ### Contact
 If you have any interest in this project, do contact us for future projects with our team. 
