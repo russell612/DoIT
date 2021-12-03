@@ -8,8 +8,8 @@ class Input: pass
 
 x = input()
 
-y = 11
-z = 222
+y = 20
+gg = 'gg'
 
 
 filehandler = open('data.txt','wb')
