@@ -1,5 +1,5 @@
-### Current Version: v0.1.4
-### Patch Notes: Added Explanations for Randomize Function
+### Current Version: v0.1.5
+### Patch Notes: Added Text for Current Tasks in the GUI
 
 
 import PySimpleGUI as sg
