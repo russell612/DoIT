@@ -8,6 +8,8 @@ window = sg.Window("To-Do-List-Randomizer", layout)
 
 while True:
     event, values = window.read()
+    if event == "Randomize Task":
+        pass #ToDo: randomize function
     if event == "Add To List":
         pass #ToDo: addToList function
     if event == "Exit" or event == sg.WIN_CLOSED:
