@@ -3,7 +3,7 @@ import pickle
 
 input = [sg.Input()]
 
-layout = [[sg.Text("Type your Input Here:")], input, [sg.Button("Add To List")], [sg.Button("Exit")]]
+layout = [[sg.Text("Type your Input Here:")], input, [sg.Button("Add To List")], [sg.Button("Randomize Task")], [sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout)
 
 while True:
