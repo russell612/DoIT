@@ -1,11 +1,16 @@
 import PySimpleGUI as sg
+import pickle
 
-layout = [[sg.Text("Hello there gays")], [sg.Button("Lol gay")]]
-window = sg.Window("Demo",layout)
+input = [sg.Input()]
+
+layout = [[sg.Text("Type your Input Here:")], input, [sg.Button("Add To List")], [sg.Button("Exit")]]
+window = sg.Window("To-Do-List-Randomizer", layout)
 
 while True:
     event, values = window.read()
-    if event == "Lol gay" or event == sg.WIN_CLOSED:
+    if event == "Add To List":
+        pass #ToDo: addToList function
+    if event == "Exit" or event == sg.WIN_CLOSED:
         break
 
 window.close()
