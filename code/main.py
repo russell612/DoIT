@@ -24,6 +24,9 @@ while True:
         input = values["input"]
         task_list.append(input)       
     if event == "Exit" or event == sg.WIN_CLOSED:
+        filehandler = open('tasklist.txt','wb')
+        pickle.dump(task_list,filehandler)
+        filehandler.close()
         break #ToDo: Save function 
 
 
