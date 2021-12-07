@@ -1,5 +1,5 @@
-### Current Version: v0.1.5
-### Patch Notes: Added Text for Current Tasks in the GUI
+### Current Version: v0.2.0
+### Patch Notes: Prototype for addToList function added plus GUI changes
 
 
 import PySimpleGUI as sg
@@ -21,7 +21,7 @@ while True:
         pass #ToDo: randomize function 
             #randomize tasks based on the file given
     if event == "Add To List":
-        input = values("input")
+        input = values["input"]
         task_list.append(input)       
     if event == "Exit" or event == sg.WIN_CLOSED:
         break #ToDo: Save function 
