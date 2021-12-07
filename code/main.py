@@ -13,12 +13,13 @@ index = 1
 #ToDo: Load Function
 ### Opens the Stored File and Loads it into the Interface.
 
-layout = [[sg.Text("Current Tasks:")],[sg.Text(key = "output")],[sg.Text("Type your Input Here:")], [sg.Input(key = "input", do_not_clear=False)], [sg.Button("Add To List"), sg.Button("Randomize Task"), sg.Button("Exit")]]
+layout = [sg.Text("Current Tasks:")],[sg.Text(key = "output")],[sg.Text("Type your Input Here:")], [sg.Input(key = "input", do_not_clear=False)], [sg.Button("Add To List"), sg.Button("Randomize Task")], sg.Button("Complete Task",visible = False) ,sg.Button("Exit")
 window = sg.Window("To-Do-List-Randomizer", layout)
 
 while True:
     event, values = window.read()
     if event == "Randomize Task":
+        update("Complete Task", visible = True)
         pass #ToDo: randomize function 
             #randomize tasks based on the file given
     if event == "Add To List":
@@ -27,10 +28,10 @@ while True:
         index += 1
         window["output"].update(task_list)       
     if event == "Exit" or event == sg.WIN_CLOSED:
-        filehandler = open('tasklist.txt','wb')
-        pickle.dump(task_list,filehandler)
-        filehandler.close()
-        break #ToDo: Save function 
+        filehandler = open('tasklist.txt','wb') #opens tasklist file to save the tasks inputted
+        pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
+        filehandler.close() #closes the file
+        break #application stops
 
 
 window.close()
