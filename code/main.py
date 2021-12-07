@@ -26,6 +26,7 @@ layout = \
     [sg.Button("Complete Task",visible = False, key= '_complete_')],
     [sg.Button("Refresh")],
     [sg.Button("Clear")],
+
     [sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout)
 
@@ -55,7 +56,10 @@ while True:
         pass #ToDo: randomize function 
             #randomize tasks based on the file given
     if event == "Add To List":
+
         input = "{}. ".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
+
+
         task_list += input # Concatenates it into the task_list string
         index += 1
         window["_output_"].update(task_list)     
