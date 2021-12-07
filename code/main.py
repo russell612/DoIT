@@ -1,6 +1,5 @@
-### Current Version: v0.2.4
-### Patch Notes: Added task_list integration into the GUI, which causes dynamic addition of the tasks plus added an automatic clear to the input once add to list is pressed
-
+### Current Version: v0.2.6
+### Patch Notes: reverted previous function integration as that didn't really work
 
 import PySimpleGUI as sg
 import pickle
@@ -18,8 +17,14 @@ index = 1
 layout = [[sg.Text("Current Tasks:")],[sg.Text(key = "output")],[sg.Text("Type your Input Here:")], [sg.Input(key = "input", do_not_clear=False)], [sg.Button("Add To List"), sg.Button("Randomize Task")], [sg.Button("Complete Task",visible = False, key= '_complete_')],[sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout)
 
+def add_to_list(task_list, index):
+    input = "{}. ".format(index) + values["input"] + "\n"
+    task_list += input
+    index += 1
+    window["output"].update(task_list)
+
 while True:
-    event, values = window.read()
+    event, values = window.read()  
     if event == "Randomize Task":
         window['_complete_'].update(visible = True)
         pass #ToDo: randomize function 
@@ -28,7 +33,7 @@ while True:
         input = "{}. ".format(index) + values["input"] + "\n"
         task_list += input
         index += 1
-        window["output"].update(task_list)       
+        window["output"].update(task_list)     
     if event == "Exit" or event == sg.WIN_CLOSED:
         filehandler = open('tasklist.txt','wb') #opens tasklist file to save the tasks inputted
         pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
