@@ -1,5 +1,5 @@
-### Current Version: v0.2.5
-### Patch Notes: Moved the addToList into a proper function
+### Current Version: v0.2.6
+### Patch Notes: reverted previous function integration as that didn't really work
 
 import PySimpleGUI as sg
 import pickle
@@ -27,7 +27,10 @@ while True:
         pass #ToDo: randomize function 
             #randomize tasks based on the file given
     if event == "Add To List":
-        add_to_list(task_list, index)       
+        input = "{}. ".format(index) + values["input"] + "\n"
+        task_list += input
+        index += 1
+        window["output"].update(task_list)     
     if event == "Exit" or event == sg.WIN_CLOSED:
         filehandler = open('tasklist.txt','wb')
         pickle.dump(task_list,filehandler)
