@@ -27,7 +27,7 @@ layout = \
     [sg.Button("Refresh")],
     [sg.Button("Clear")],
     [sg.Button("Exit")]]
-window = sg.Window("To-Do-List-Randomizer", layout)
+window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
 
 def add_to_list(task_list, index):
     input = "{} ".format(index) + values["input"] + "\n"
@@ -36,7 +36,7 @@ def add_to_list(task_list, index):
     window["output"].update(task_list)
 
 print(task_list)
-
+window["_output_"].update(task_list)
 while True:
 
     event, values = window.read()  
@@ -69,7 +69,5 @@ while True:
         pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
         filehandler.close() #closes the file
         break #application stops
-
-
 
 window.close()
