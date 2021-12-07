@@ -1,5 +1,5 @@
-### Current Version: v0.2.0
-### Patch Notes: Prototype for addToList function added plus GUI changes
+### Current Version: v0.2.1
+### Patch Notes: changed line 24 for input's brackets to square brackets, otherwise error will be called.
 
 
 import PySimpleGUI as sg
