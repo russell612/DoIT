@@ -1,5 +1,5 @@
-### Current Version: v0.2.3
-### Patch Notes: Added task_list integration into the GUI, which causes dynamic addition of the tasks
+### Current Version: v0.2.4
+### Patch Notes: Added task_list integration into the GUI, which causes dynamic addition of the tasks plus added an automatic clear to the input once add to list is pressed
 
 
 import PySimpleGUI as sg
