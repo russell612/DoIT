@@ -1,5 +1,5 @@
-### Current Version: v0.2.6
-### Patch Notes: reverted previous function integration as that didn't really work
+### Current Version: v0.2.8
+### Patch Notes: Added Comments
 
 import PySimpleGUI as sg
 import pickle
@@ -30,8 +30,8 @@ while True:
         pass #ToDo: randomize function 
             #randomize tasks based on the file given
     if event == "Add To List":
-        input = "{}. ".format(index) + values["input"] + "\n"
-        task_list += input
+        input = "{}. ".format(index) + values["input"] + "\n" # Gives an index with the values from the input text and adds \n to create a new line
+        task_list += input # Concatenates it into the task_list string
         index += 1
         window["output"].update(task_list)     
     if event == "Exit" or event == sg.WIN_CLOSED:
