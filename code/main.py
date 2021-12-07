@@ -13,7 +13,7 @@ index = 1
 #ToDo: Load Function
 ### Opens the Stored File and Loads it into the Interface.
 
-layout = [[sg.Text("Current Tasks:")],[sg.Text(key = "output")],[sg.Text("Type your Input Here:")], [sg.Input(key = "input")], [sg.Button("Add To List"), sg.Button("Randomize Task"), sg.Button("Exit")]]
+layout = [[sg.Text("Current Tasks:")],[sg.Text(key = "output")],[sg.Text("Type your Input Here:")], [sg.Input(key = "input", do_not_clear=False)], [sg.Button("Add To List"), sg.Button("Randomize Task"), sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout)
 
 while True:
