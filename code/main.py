@@ -24,7 +24,6 @@ layout = \
     [sg.Input(key = "_input_", do_not_clear=False)], 
     [sg.Button("Add To List"), sg.Button("Randomize Task")], 
     [sg.Button("Complete Task",visible = False, key= '_complete_')],
-    [sg.Button("Refresh")],
     [sg.Button("Clear")],
     [sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
@@ -48,10 +47,7 @@ while True:
         task_list=empty_list
         pickle.dump(task_list,filehandler) 
         filehandler.close() #closes the file
-        window["_output_"].update(task_list)
-
-    if event =="Refresh":
-        window["_output_"].update(task_list)      
+        window["_output_"].update(task_list)     
 
     if event == "Randomize Task":
         window['_complete_'].update(visible = True)
@@ -61,7 +57,6 @@ while True:
     if event == "Add To List":
         input = "{} ".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         task_list += input # Concatenates it into the task_list string
-        index += 1
         window["_output_"].update(task_list)     
 
     if event == "Exit" or event == sg.WIN_CLOSED:
