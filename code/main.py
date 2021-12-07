@@ -21,8 +21,8 @@ index = 1
 layout = \
     [[sg.Text("Current Tasks:")],
     [sg.Text(key = "_output_")],
-    [sg.Text("Your Randomized Task is:")]
-    [sg.Text(key="_random_")]
+    [sg.Text("Your Randomized Task is:")],
+    [sg.Text(key="_random_")],
     [sg.Text("Type your Input Here:")], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
     [sg.Button("Add To List"), sg.Button("Randomize Task")], 
