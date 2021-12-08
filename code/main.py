@@ -12,6 +12,7 @@ task_list = ''
 saved_file=pickle.load(open('tasklist.txt','rb'))
 task_list+=saved_file
 empty_list= ''
+specific_task = ''
 sg.theme('SystemDefaultForReal')
 index = 1
 
@@ -49,10 +50,12 @@ def randomize(string_list):
 
 def task_random(string_list):
     randomized_list = randomize(string_list)
+    specific_task = randomized_list.pop(0)
     task_list = empty_list
-    for task in randomized_list:
-        task_list += "{} ".format(task) + '\n'
-    window["_output_"].update(task_list)
+    # for task in randomized_list:
+    #     task_list += "{} ".format(task) + '\n'
+    window["_random_"].update(specific_task)
+    # window["_output_"].update(task_list)
 
     return task_list
     
