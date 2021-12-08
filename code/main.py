@@ -76,18 +76,18 @@ while True:
         window["_output_"].update(task_list)    
         
 
-    if event == "Randomize Task" and is_done == True:
-        task = task_random(task_list)
-        is_done = False
-
-    if event == "Randomize Task" and is_done == False:
-        pass
+    if event == "Randomize Task":
+        if is_done == True:
+            task = task_random(task_list)
+            is_done = False
+        else:
+            window["_output_"].update("Please finish the current task first!")
 
     if event == "Complete Task" and is_done == False:
         is_done = True
 
         
-        
+
     if event == "Add To List":
         input = "{} ".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         task_list += input # Concatenates it into the task_list string
