@@ -8,8 +8,6 @@ import PySimpleGUI as sg
 import pickle
 import random
 
-from PySimpleGUI.PySimpleGUI import Window
-
 #Global Variables
 task_list = ''
 saved_file=pickle.load(open('tasklist.txt','rb'))
@@ -58,9 +56,9 @@ def clear_task_after_done(string_list):
             temp_list.remove(task)
     task_list = empty_list
     for leftover in temp_list:
-        task_list += "{} ".format(leftover) + '\n'
+        task_list += "{}".format(leftover) + '\n'
     window["_output_"].update(task_list)
-    return task_list
+    window["_random_"].update(specific_task + " : DONE")
     
 
 
@@ -76,6 +74,7 @@ while True:
         task_list=empty_list
         pickle.dump(task_list,filehandler) 
         filehandler.close() #closes the file
+        window["_random_"].update("")
         window["_output_"].update(task_list)    
         
 
