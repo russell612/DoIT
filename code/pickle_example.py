@@ -10,7 +10,6 @@ x = input()
 
 y = 20
 gg = 'gg'
-# Fuck you Ryan Gay Cunt
 
 
 filehandler = open('data.txt','wb')
