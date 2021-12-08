@@ -1,6 +1,5 @@
-### Current Version: v0.2.12
-### Patch Notes: Tweaked randomizer
-
+### Current Version: v0.3.0
+### Patch Notes: Tweaked GUI, moved to version 0.3.0 as most features are complete
 import PySimpleGUI as sg
 import pickle
 import random
@@ -24,10 +23,10 @@ layout = \
     [sg.Text(key = "_output_")],
     [sg.Text("Your Randomized Task is:")],
     [sg.Text(key="_random_")],
+    [sg.Button("Randomize Task"), sg.Button("Complete Task",visible = False, key= '_complete_')],
     [sg.Text("Type your Input Here:")], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
-    [sg.Button("Add To List"), sg.Button("Randomize Task")], 
-    [sg.Button("Complete Task",visible = False, key= '_complete_')],
+    [sg.Button("Add To List")], 
     [sg.Button("Clear")],
     [sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
