@@ -1,5 +1,5 @@
-### Current Version: v0.4.3
-### Patch Notes: Small GUI tweaks to the system.
+### Current Version: v0.4.4
+### Patch Notes: Added functionality on when Enter is pressed, it will add what is on the input text field to the list
 
 import PySimpleGUI as sg
 import pickle
@@ -30,12 +30,7 @@ layout = \
     [sg.Input(key = "_input_", do_not_clear=False)], 
     [sg.Button("Add To List"), sg.Button("Clear"), sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
-
-# def add_to_list(task_list, index):
-#     input = "{} ".format(index) + values["input"] + "\n"
-#     task_list += input
-#     index += 1
-#     window["output"].update(task_list)
+window["_input_"].bind("<Return>", "enter")
 
 
 def randomize(string_list):
@@ -75,7 +70,7 @@ def clear_task_after_done(string_list):
     return task_list
     
 
-print(task_list)
+
 window["_output_"].update(task_list)
 while True:
 
@@ -113,13 +108,13 @@ while True:
         
 
         
-    if event == "Add To List":
+    if event == "Add To List" or event == "_input_" + "enter":
         input = "{} ".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         task_list += input # Concatenates it into the task_list string
         window["_output_"].update(task_list)    
 
 
-    if event == "Exit" or event == sg.WIN_CLOSED:
+    if event == "Exit" or event == sg.WIN_CLOSED: 
         filehandler = open('tasklist.txt','wb') #opens tasklist file to save the tasks inputted
         pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
         filehandler.close() #closes the file
