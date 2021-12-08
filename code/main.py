@@ -1,5 +1,5 @@
-### Current Version: v0.3.1
-### Patch Notes: Added functionality where app will not randomize if there is already one task that is listed
+### Current Version: v0.3.2
+### Patch Notes: Smashed Bug for Randomize, Complete Task is now always visible however
 import PySimpleGUI as sg
 import pickle
 import random
@@ -24,7 +24,7 @@ layout = \
     [sg.Text(key = "_output_")],
     [sg.Text("Your Randomized Task is:")],
     [sg.Text(key="_random_")],
-    [sg.Button("Randomize Task"), sg.Button("Complete Task",visible = False, key= '_complete_')],
+    [sg.Button("Randomize Task"), sg.Button("Complete Task")],
     [sg.Text("Type your Input Here:")], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
     [sg.Button("Add To List")], 
@@ -77,7 +77,6 @@ while True:
         
 
     if event == "Randomize Task" and is_done == True:
-        window['_complete_'].update(visible = True)
         task = task_random(task_list)
         is_done = False
 
