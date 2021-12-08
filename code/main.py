@@ -1,5 +1,5 @@
-### Current Version: v0.2.11
-### Patch Notes: Added Text Fields for the Randomized Task selected
+### Current Version: v0.2.12
+### Patch Notes: Tweaked randomizer
 
 import PySimpleGUI as sg
 import pickle
