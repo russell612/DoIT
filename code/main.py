@@ -1,4 +1,4 @@
-### Current Version: v0.4.5
+### Current Version: v0.4.6
 ### Patch Notes:  1. able to detect duplicate task  
 # 2. forbid user from inputing empty task     
 # 3.Able to detect if users finishes all the tasks, automatically congraulate, no need press one more time complete task
@@ -15,7 +15,6 @@ task_list+=saved_file
 empty_list= ''
 specific_task = ''
 sg.theme('SystemDefaultForReal')
-index = 1
 is_done = True
 program_counter = 0
 
@@ -38,8 +37,8 @@ def randomize(string_list):
     while hash % 47 != 0:
         hash = random.getrandbits(64)
         random.shuffle(list_to_randomize)
-
     return list_to_randomize
+
 
 def task_random(string_list):
     global specific_task
@@ -60,6 +59,7 @@ def clear_task_after_done(string_list):
     window["_output_"].update(task_list)
     window["_random_"].update(specific_task + " : DONE")
     
+
 
 
 window["_output_"].update(task_list)
@@ -84,10 +84,8 @@ while True:
             is_done = False
         else:
             sg.popup("Please finish the current task first!")
-
-    if event == "Randomize Task" and len(task_list) == 0:
+    elif event == "Randomize Task" and len(task_list) == 0:
         sg.popup("Please input a task")
-
 
 
     if event == "Complete Task" and is_done == False and len(task_list) > 0:
@@ -98,7 +96,6 @@ while True:
     elif event == "Complete Task" and len(task_list) == 0:
         window["_output_"].update("Congratulations, you have completed all your tasks!")
         
-
         
     if event == "Add To List" or event == "_input_" + "enter":
         input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
@@ -119,8 +116,10 @@ while True:
         filehandler.close() #closes the file
         break #application stops
 
+
     if program_counter != 0 and len(task_list) == 0:
         window["_output_"].update("Congratulations, you have completed all your tasks!")
+
 
 
 window.close()
