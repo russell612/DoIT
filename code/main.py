@@ -1,6 +1,5 @@
-### Current Version: v0.4.2
-### Patch Notes: Complete function done. Improved logic when task list is empty and user wants to randomize
-###              Also improved feedback when users finish all tasks
+### Current Version: v0.4.3
+### Patch Notes: Small GUI tweaks to the system.
 
 import PySimpleGUI as sg
 import pickle
@@ -29,9 +28,7 @@ layout = \
     [sg.Button("Randomize Task"), sg.Button("Complete Task")],
     [sg.Text("Type your Input Here:")], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
-    [sg.Button("Add To List")], 
-    [sg.Button("Clear")],
-    [sg.Button("Exit")]]
+    [sg.Button("Add To List"), sg.Button("Clear"), sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
 
 # def add_to_list(task_list, index):
