@@ -1,5 +1,5 @@
-### Current Version: v0.3.0
-### Patch Notes: Tweaked GUI, moved to version 0.3.0 as most features are complete
+### Current Version: v0.3.1
+### Patch Notes: Added functionality where app will not randomize if there is already one task that is listed
 import PySimpleGUI as sg
 import pickle
 import random
@@ -14,6 +14,7 @@ empty_list= ''
 specific_task = ''
 sg.theme('SystemDefaultForReal')
 index = 1
+is_done = True
 
 #ToDo: Load Function
 ### Opens the Stored File and Loads it into the Interface.
@@ -75,9 +76,17 @@ while True:
         window["_output_"].update(task_list)     
 
 
-    if event == "Randomize Task":
+    if event == "Randomize Task" and is_done == True:
         window['_complete_'].update(visible = True)
-        task_random(task_list)
+        task = task_random(task_list)
+        is_done = False
+
+    if event == "Randomize Task" and is_done == False:
+        pass
+
+    if event == "Complete Task" and is_done == False:
+        is_done = True
+
 
 
     if event == "Add To List":
