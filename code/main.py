@@ -1,5 +1,8 @@
-### Current Version: v0.4.4
-### Patch Notes: Added functionality on when Enter is pressed, it will add what is on the input text field to the list
+### Current Version: v0.4.5
+### Patch Notes:  1. able to detect duplicate task  
+# 2. forbid user from inputing empty task     
+# 3.Able to detect if users finishes all the tasks, automatically congraulate, no need press one more time complete task
+# 4. If users press complete task without adding any task, will not congratulate!!
 
 import PySimpleGUI as sg
 import pickle
@@ -16,6 +19,7 @@ specific_task = ''
 sg.theme('SystemDefaultForReal')
 index = 1
 is_done = True
+program_counter = 0
 
 #ToDo: Load Function
 ### Opens the Stored File and Loads it into the Interface.
@@ -91,27 +95,34 @@ while True:
             task = task_random(task_list)
             is_done = False
         else:
-            window["_output_"].update("Please finish the current task first!")
+            sg.popup("Please finish the current task first!")
 
     if event == "Randomize Task" and len(task_list) == 0:
-        window["_output_"].update("Please input a task.")
+        sg.popup("Please input a task")
 
 
 
-    if event == "Complete Task" and is_done == False:
+    if event == "Complete Task" and is_done == False and len(task_list) > 0:
         is_done = True
         clear_task_after_done(task_list)
-
-
-    if event == "Complete Task" and len(task_list) == 0:
+    elif event == "Complete Task" and program_counter == 0:
+       sg.popup("Please input and randomize task before completing")
+    elif event == "Complete Task" and len(task_list) == 0:
         window["_output_"].update("Congratulations, you have completed all your tasks!")
         
 
         
     if event == "Add To List" or event == "_input_" + "enter":
-        input = "{} ".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
-        task_list += input # Concatenates it into the task_list string
-        window["_output_"].update(task_list)    
+        input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
+        if len(input.strip().strip('\n')) != 0:
+            if input.strip() in task_list.splitlines():
+                sg.popup("Task already exists")
+            else:
+                task_list += input # Concatenates it into the task_list string
+                program_counter += 1
+                window["_output_"].update(task_list)  
+        else:
+            sg.popup("Please input a valid task!")  
 
 
     if event == "Exit" or event == sg.WIN_CLOSED: 
@@ -119,6 +130,9 @@ while True:
         pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
         filehandler.close() #closes the file
         break #application stops
+
+    if program_counter != 0 and len(task_list) == 0:
+        window["_output_"].update("Congratulations, you have completed all your tasks!")
 
 
 window.close()
