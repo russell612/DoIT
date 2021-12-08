@@ -1,5 +1,5 @@
-### Current Version: v0.4.4
-### Patch Notes: Added functionality on when Enter is pressed, it will add what is on the input text field to the list
+### Current Version: v0.4.5
+### Patch Notes: Cleaned up redundant Code
 
 import PySimpleGUI as sg
 import pickle
@@ -16,9 +16,6 @@ specific_task = ''
 sg.theme('SystemDefaultForReal')
 index = 1
 is_done = True
-
-#ToDo: Load Function
-### Opens the Stored File and Loads it into the Interface.
 
 layout = \
     [[sg.Text("Current Tasks:")],
@@ -46,20 +43,12 @@ def task_random(string_list):
     global specific_task
     randomized_list = randomize(string_list)
     specific_task = randomized_list[0]
-    # task_list = empty_list
-    # for task in randomized_list:
-    #     task_list += "{} ".format(task) + '\n'
     window["_random_"].update(specific_task)
-    # window["_output_"].update(task_list)
-    # return task_list
 
 
 def clear_task_after_done(string_list):
     global task_list
     temp_list = string_list.splitlines()
-    # print(temp_list)
-    # specific_task = randomized_list[0]
-    # print(specific_task)
     for task in temp_list:
         if task == specific_task:
             temp_list.remove(task)
