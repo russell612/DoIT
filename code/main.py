@@ -56,6 +56,7 @@ def task_random(string_list):
     
 
 print(task_list)
+
 window["_output_"].update(task_list)
 while True:
 
