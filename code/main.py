@@ -1,8 +1,5 @@
-### Current Version: v0.4.6
-### Patch Notes:  1. able to detect duplicate task  
-# 2. forbid user from inputing empty task     
-# 3.Able to detect if users finishes all the tasks, automatically congraulate, no need press one more time complete task
-# 4. If users press complete task without adding any task, will not congratulate!!
+### Current Version: v0.4.7
+### Patch Notes: Improved clear function 
 
 import PySimpleGUI as sg
 import pickle
@@ -16,6 +13,7 @@ empty_list= ''
 specific_task = ''
 sg.theme('SystemDefaultForReal')
 is_done = True
+is_clear = True
 program_counter = 0
 
 layout = \
@@ -74,6 +72,7 @@ while True:
         task_list=empty_list
         pickle.dump(task_list,filehandler) 
         filehandler.close() #closes the file
+        is_clear = True
         window["_random_"].update("")
         window["_output_"].update(task_list)    
         
@@ -105,6 +104,7 @@ while True:
             else:
                 task_list += input # Concatenates it into the task_list string
                 program_counter += 1
+                is_clear = False
                 window["_output_"].update(task_list)  
         else:
             sg.popup("Please input a valid task!")  
@@ -117,8 +117,12 @@ while True:
         break #application stops
 
 
-    if program_counter != 0 and len(task_list) == 0:
+    if program_counter != 0 and len(task_list) == 0 and is_clear != True:
         window["_output_"].update("Congratulations, you have completed all your tasks!")
+
+    
+    if program_counter != 0 and len(task_list) == 0 and is_clear == True:
+        window["_output_"].update("You have cleared all tasks. Please input tasks.")
 
 
 
