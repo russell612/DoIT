@@ -88,7 +88,8 @@ while True:
         filehandler.close() #closes the file
         is_clear = True
         window["_random_"].update("")
-        window["items"].update(task_list)    
+        window["items"].update(task_list)
+        click=False    
         
 
     if event == "Randomize Task" and len(task_list) != 0:
@@ -97,17 +98,22 @@ while True:
             is_done = False
         else:
             sg.popup("Please finish the current task first! No skipping! >:C",title='',button_color=('black','grey80'),font=fontt)
+        click=False
     elif event == "Randomize Task" and len(task_list) == 0:
         sg.popup("Please input a task! There are no current tasks left.",title='',button_color=('black','grey80'),font=fontt)
+        click=False
 
 
     if event == "Complete Task" and is_done == False and len(task_list) > 0:
         is_done = True
         clear_task_after_done(task_list)
+        click=False
     elif event == "Complete Task" and program_counter == 0:
        sg.popup("Please input and randomize tasks before completing.",title='',button_color=('black','grey80'),font=fontt)
+       click=False
     elif event == "Complete Task" and len(task_list) == 0:
         window["_random_"].update("Congratulations, you have completed all your tasks! *confetti*")
+        click=False
         
         
     if event == "Add To List" or event == "_input_" + "enter":
@@ -116,13 +122,16 @@ while True:
         if len(input.strip().strip('\n')) != 0:
             if input.strip() in task_list.splitlines():
                 sg.popup("Task already exists (x.x)",title='',font=fontt)
+                click=False
             else:
                 task_list += input # Concatenates it into the task_list string
                 program_counter += 1
                 is_clear = False
-                window["items"].update(task_list.splitlines())  
+                window["items"].update(task_list.splitlines()) 
+                click=False 
         else:
             sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)
+            click=False
 
     
 
