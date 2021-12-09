@@ -21,14 +21,13 @@ Users are allowed to then edit the task that they have entered or delete them en
 ![alt text](https://cdn.discordapp.com/attachments/914879984122859531/918526470949851146/Screenshot_2021-12-09_at_11.36.00_PM.png)
 <p align= 'center'>Proposed Welcome Page of our Platform</p><br>
 
-![alt text](https://user-images.githubusercontent.com/47515350/145441743-4468cf07-e09d-4623-9057-ca3a20cfbf37.png) <br>
-
-<p align= 'center'>Potential Look of DoIT Social Platform</p><br><br>
+![alt text](https://user-images.githubusercontent.com/47515350/145441743-4468cf07-e09d-4623-9057-ca3a20cfbf37.png)
+<p align= 'center'>Potential Look of DoIT Social Platform</p> <br>
 
 If the project wins or gains traction, future projects include creating a social platform based on the app where you could compete with your friends or people around you on whoever finishes the most tasks in a given timeframe. This will spur motivation among people to do their tasks in a healthy, competitive way. Stay tuned for updates. <br>
 
 ### Build Status
-Minimum Viable Product is now Live on with current version of v0.4.7. Adding more functionality/features so stay tuned!
+Minimum Viable Product is now Live with current version of v0.4.7. Adding more functionality/features so stay tuned!
 
 ### Made with
 Python - Coding Language <br>
