@@ -1,4 +1,5 @@
-# To-Do List Randomizer
+![alt text](https://user-images.githubusercontent.com/47515350/145448709-b0dc6dcf-ec15-447f-b4f2-695bd071c28c.png)
+# DoIT: A To-Do List Randomizer
 ## A group project created by Full Stop
 
 Have you ever had the thought of having too much to do and so you do nothing due to the sheer stress of thinking about it?<br/>
