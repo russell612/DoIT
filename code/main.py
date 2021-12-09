@@ -7,13 +7,16 @@ import random
 
 #Global Variables
 task_list = ''
-saved_file=pickle.load(open('tasklist.txt','rb'))
+file=open('tasklist.txt','rb')
+saved_file=pickle.load(file)
 task_list+=saved_file
+file.close()
 empty_list= ''
 specific_task = ''
 is_done = True
 is_clear = True
 program_counter = 0
+click=False
 
 #window design
 fontt = ('Lato',11)
@@ -24,7 +27,7 @@ sg.theme_text_element_background_color('grey15')
 
 layout = \
     [[sg.Text("Current Tasks:",font=fontt)],
-    [sg.Listbox(values=task_list, size=(40, 10), key="items"), sg.Button('Delete'), sg.Button('Edit')],
+    [sg.Listbox(values=task_list, size=(40, 10), key="items",select_mode = True, bind_return_key = False , enable_events= True), sg.Button('Delete',button_color=('black','grey80')), sg.Button('Edit',button_color=('black','grey80'))],
     [sg.Text("Your Randomized Task is:",font=fontt)],
     [sg.Text(key="_random_",font=fontt)],
     [sg.Button("Randomize Task",button_color=('black','grey80')), sg.Button("Complete Task",button_color=('black','grey80'))],
@@ -76,7 +79,6 @@ window["items"].update(task_list.splitlines())
 while True:
 
     event, values = window.read()  
-    window["items"].update(task_list.splitlines())
 
 
     if event =="Clear":
@@ -121,16 +123,13 @@ while True:
         else:
             sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)
 
-    if event == "Delete" and len(task_list) > 0:
+    
 
+    
+    if event=="items":
+        click=True
 
-        splitted=task_list.splitlines()
-        splitted.remove(values["items"][0])
-        window.find_element('items').Update(values=splitted)
-        task_list=chgstr(splitted)
-
-
-    if event == "Edit" and len(task_list):
+    if event == "Edit" and len(task_list) > 0 and click==True :
         
         edit_val = values["items"][0]
         splitted=task_list.splitlines()
@@ -138,7 +137,25 @@ while True:
         window.find_element('items').Update(values=splitted)
         window.find_element('_input_').Update(value=edit_val)
         window.find_element('Add To List').Update("Save")
-        task_list=chgstr(splitted)  
+        task_list=chgstr(splitted)
+        click=False
+
+    if event == "Delete" and len(task_list) > 0 and click ==True > 0:
+
+
+        splitted=task_list.splitlines()
+        splitted.remove(values["items"][0])
+        window.find_element('items').Update(values=splitted)
+        task_list=chgstr(splitted)
+        click=False
+
+    if event == "Edit" and len(task_list)>0 and click!=True :
+        sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
+
+    if event == "Delete" and len(task_list)>0 and click!=True :
+        sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
+
+
 
 
     if event == "Exit" or event == sg.WIN_CLOSED: 
