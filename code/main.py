@@ -25,12 +25,12 @@ sg.theme_text_element_background_color('grey15')
 layout = \
     [[sg.Text("Current Tasks:",font=fontt)],
     [sg.Text(key = "_output_",font=fontt)],
-    [sg.Text("Your Randomized Task is:"font=fontt)],
-    [sg.Text(key="_random_"font=fontt)],
-    [sg.Button("Randomize Task"), sg.Button("Complete Task")],
-    [sg.Text("Type your Input Here:"font=fontt)], 
+    [sg.Text("Your Randomized Task is:",font=fontt)],
+    [sg.Text(key="_random_",font=fontt)],
+    [sg.Button("Randomize Task",button_color=('black','grey80')), sg.Button("Complete Task",button_color=('black','grey80'))],
+    [sg.Text("Type your Input Here:",font=fontt)], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
-    [sg.Button("Add To List"), sg.Button("Clear"), sg.Button("Exit")]]
+    [sg.Button("Add To List",button_color=('black','grey80')), sg.Button("Clear",button_color=('black','grey80')), sg.Button("Exit",button_color=('black','grey80'))]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
 window["_input_"].bind("<Return>", "enter")
 
