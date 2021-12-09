@@ -111,6 +111,7 @@ while True:
         
         
     if event == "Add To List" or event == "_input_" + "enter":
+        window.find_element('Add To List').Update("Add")
         input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         if len(input.strip().strip('\n')) != 0:
             if input.strip() in task_list.splitlines():
