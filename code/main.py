@@ -88,16 +88,16 @@ while True:
             task = task_random(task_list)
             is_done = False
         else:
-            sg.popup("Please finish the current task first! No skipping! >:C",title='')
+            sg.popup("Please finish the current task first! No skipping! >:C",title='',button_color=('black','grey80'),font=fontt)
     elif event == "Randomize Task" and len(task_list) == 0:
-        sg.popup("Please input a task! There are no current tasks left.",title='')
+        sg.popup("Please input a task! There are no current tasks left.",title='',button_color=('black','grey80'),font=fontt)
 
 
     if event == "Complete Task" and is_done == False and len(task_list) > 0:
         is_done = True
         clear_task_after_done(task_list)
     elif event == "Complete Task" and program_counter == 0:
-       sg.popup("Please input and randomize task before completing")
+       sg.popup("Please input and randomize tasks before completing.",title='',button_color=('black','grey80'),font=fontt)
     elif event == "Complete Task" and len(task_list) == 0:
         window["_output_"].update("Congratulations, you have completed all your tasks! *confetti*")
         
@@ -106,14 +106,14 @@ while True:
         input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         if len(input.strip().strip('\n')) != 0:
             if input.strip() in task_list.splitlines():
-                sg.popup("Task already exists (x.x)",title='')
+                sg.popup("Task already exists (x.x)",title='',font=fontt)
             else:
                 task_list += input # Concatenates it into the task_list string
                 program_counter += 1
                 is_clear = False
                 window["_output_"].update(task_list)  
         else:
-            sg.popup("Please input a valid task!",title='')  
+            sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)  
 
 
     if event == "Exit" or event == sg.WIN_CLOSED: 
