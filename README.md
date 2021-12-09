@@ -5,9 +5,9 @@ Have you ever had the thought of having too much to do and so you do nothing due
 
 Well do we have a solution for you (kinda)
 ### Introduction
-A small group project by a bunch of University Students from Monash for an internal Hackathon with the theme of digitilization of our daily tasks.
-Our goal is to reduce the stress and burnout of everyday life, especially in the pandemic, through a step-by-step approach towards handling our day-to-day routine. <br/>
-Once the hackathon is finished the app will be feature complete with a basic GUI and the the main feature of randomizing stored tasks being operational. Data is stored in a text file in the app folder using Pickle.
+A small group project by a bunch of students from Monash University for an internal hackathon with the theme of digitilization of our daily life.
+Our goal is to reduce the stress and burnout of everyday life, especially in the pandemic, through a step-by-step approach towards handling our day-to-day routine. <br/><br>
+Once the hackathon is finished, the app will be feature complete with a basic GUI. The main feature of our app is to randomize stored tasks. Data is stored in a text file in the app folder using Pickle.
 
 ### Feature Set
 ![alt text](https://user-images.githubusercontent.com/47515350/145440313-f58fe2f1-e7da-4ff5-abae-217b40a96503.png)<br>
