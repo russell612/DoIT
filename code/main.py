@@ -11,24 +11,24 @@ saved_file=pickle.load(open('tasklist.txt','rb'))
 task_list+=saved_file
 empty_list= ''
 specific_task = ''
-sg.theme('SystemDefaultForReal')
 is_done = True
 is_clear = True
 program_counter = 0
 
 #window design
+fontt = ('Lato',11)
 sg.theme_background_color('grey15')
 sg.theme_text_color('white')
 sg.theme_button_color('grey80')
 sg.theme_text_element_background_color('grey15')
 
 layout = \
-    [[sg.Text("Current Tasks:")],
-    [sg.Text(key = "_output_")],
-    [sg.Text("Your Randomized Task is:")],
-    [sg.Text(key="_random_")],
+    [[sg.Text("Current Tasks:",font=fontt)],
+    [sg.Text(key = "_output_",font=fontt)],
+    [sg.Text("Your Randomized Task is:"font=fontt)],
+    [sg.Text(key="_random_"font=fontt)],
     [sg.Button("Randomize Task"), sg.Button("Complete Task")],
-    [sg.Text("Type your Input Here:")], 
+    [sg.Text("Type your Input Here:"font=fontt)], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
     [sg.Button("Add To List"), sg.Button("Clear"), sg.Button("Exit")]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
@@ -61,7 +61,7 @@ def clear_task_after_done(string_list):
     for leftover in temp_list:
         task_list += "{}".format(leftover) + '\n'
     window["_output_"].update(task_list)
-    window["_random_"].update(specific_task + " : DONE")
+    window["_random_"].update(specific_task + " : DONE :)")
     
 
 
@@ -88,9 +88,9 @@ while True:
             task = task_random(task_list)
             is_done = False
         else:
-            sg.popup("Please finish the current task first!")
+            sg.popup("Please finish the current task first! No skipping! >:C",title='')
     elif event == "Randomize Task" and len(task_list) == 0:
-        sg.popup("Please input a task")
+        sg.popup("Please input a task! There are no current tasks left.",title='')
 
 
     if event == "Complete Task" and is_done == False and len(task_list) > 0:
@@ -99,21 +99,21 @@ while True:
     elif event == "Complete Task" and program_counter == 0:
        sg.popup("Please input and randomize task before completing")
     elif event == "Complete Task" and len(task_list) == 0:
-        window["_output_"].update("Congratulations, you have completed all your tasks!")
+        window["_output_"].update("Congratulations, you have completed all your tasks! *confetti*")
         
         
     if event == "Add To List" or event == "_input_" + "enter":
         input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         if len(input.strip().strip('\n')) != 0:
             if input.strip() in task_list.splitlines():
-                sg.popup("Task already exists")
+                sg.popup("Task already exists (x.x)",title='')
             else:
                 task_list += input # Concatenates it into the task_list string
                 program_counter += 1
                 is_clear = False
                 window["_output_"].update(task_list)  
         else:
-            sg.popup("Please input a valid task!")  
+            sg.popup("Please input a valid task!",title='')  
 
 
     if event == "Exit" or event == sg.WIN_CLOSED: 
@@ -124,7 +124,7 @@ while True:
 
 
     if program_counter != 0 and len(task_list) == 0 and is_clear != True:
-        window["_output_"].update("Congratulations, you have completed all your tasks!")
+        window["_output_"].update("Congratulations, you have completed all your tasks! \(0^0)/")
 
     
     if program_counter != 0 and len(task_list) == 0 and is_clear == True:
