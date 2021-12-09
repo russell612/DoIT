@@ -16,6 +16,12 @@ is_done = True
 is_clear = True
 program_counter = 0
 
+#window design
+sg.theme_background_color('grey15')
+sg.theme_text_color('white')
+sg.theme_button_color('grey80')
+sg.theme_text_element_background_color('grey15')
+
 layout = \
     [[sg.Text("Current Tasks:")],
     [sg.Text(key = "_output_")],
