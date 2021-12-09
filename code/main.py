@@ -23,35 +23,24 @@ sg.theme_button_color('grey80')
 sg.theme_text_element_background_color('grey15')
 
 layout = \
-<<<<<<< HEAD
-    [[sg.Text("Current Tasks:")],
-    [sg.Listbox(values=task_list, size=(40, 10), key="items"), sg.Button('Delete'), sg.Button('Edit')],
-    [sg.Text("Your Randomized Task is:")],
-    [sg.Text(key="_random_")],
-    [sg.Button("Randomize Task"), sg.Button("Complete Task")],
-    [sg.Text("Type your Input Here:")], 
-    [sg.Input(key = "_input_", do_not_clear=False)], 
-    [sg.Button(button_text='Add', key="Add To List"), sg.Button("Clear"), sg.Button("Exit")]]
-=======
     [[sg.Text("Current Tasks:",font=fontt)],
-    [sg.Text(key = "_output_",font=fontt)],
+    [sg.Listbox(values=task_list, size=(40, 10), key="items"), sg.Button('Delete'), sg.Button('Edit')],
     [sg.Text("Your Randomized Task is:",font=fontt)],
     [sg.Text(key="_random_",font=fontt)],
     [sg.Button("Randomize Task",button_color=('black','grey80')), sg.Button("Complete Task",button_color=('black','grey80'))],
     [sg.Text("Type your Input Here:",font=fontt)], 
     [sg.Input(key = "_input_", do_not_clear=False)], 
-    [sg.Button("Add To List",button_color=('black','grey80')), sg.Button("Clear",button_color=('black','grey80')), sg.Button("Exit",button_color=('black','grey80'))]]
->>>>>>> cd7159ecae4844faa6aaba3d748d15955a9a4f65
+    [sg.Button(button_text='Add', key="Add To List",button_color=('black','grey80')), sg.Button("Clear",button_color=('black','grey80')), sg.Button("Exit",button_color=('black','grey80'))]]
 window = sg.Window("To-Do-List-Randomizer", layout, finalize=True)
 window["_input_"].bind("<Return>", "enter")
-
 
 def chgstr(s): 
     str1 = ""    
     for ele in s: 
         str1 += ele +"\n"  
     return str1 
-        
+
+
 def randomize(string_list):
     hash = random.getrandbits(64)
     list_to_randomize = string_list.splitlines()
@@ -77,13 +66,8 @@ def clear_task_after_done(string_list):
     task_list = empty_list
     for leftover in temp_list:
         task_list += "{}".format(leftover) + '\n'
-<<<<<<< HEAD
     window["items"].update(task_list.splitlines())
-    window["_random_"].update(specific_task + " : DONE")
-=======
-    window["_output_"].update(task_list)
     window["_random_"].update(specific_task + " : DONE :)")
->>>>>>> cd7159ecae4844faa6aaba3d748d15955a9a4f65
     
 
 
@@ -121,15 +105,11 @@ while True:
     elif event == "Complete Task" and program_counter == 0:
        sg.popup("Please input and randomize tasks before completing.",title='',button_color=('black','grey80'),font=fontt)
     elif event == "Complete Task" and len(task_list) == 0:
-<<<<<<< HEAD
-        window["items"].update("Congratulations, you have completed all your task_list!")
-=======
-        window["_output_"].update("Congratulations, you have completed all your tasks! *confetti*")
->>>>>>> cd7159ecae4844faa6aaba3d748d15955a9a4f65
+        window["items"].update("Congratulations, you have completed all your tasks! *confetti*")
         
         
     if event == "Add To List" or event == "_input_" + "enter":
-        input = "{}".format(values["_input_"])+ "\n"  # Gives an index with the values from the input text and adds \n to create a new line
+        input = "{}".format(values["_input_"]) + "\n" # Gives an index with the values from the input text and adds \n to create a new line
         if len(input.strip().strip('\n')) != 0:
             if input.strip() in task_list.splitlines():
                 sg.popup("Task already exists (x.x)",title='',font=fontt)
@@ -139,11 +119,9 @@ while True:
                 is_clear = False
                 window["items"].update(task_list.split())  
         else:
-<<<<<<< HEAD
-            sg.popup("Please input a valid task!")  
-        window.find_element('Add To List').Update("Add")
-        
-    elif event == "Delete" and len(task_list) > 0:
+            sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)
+
+    if event == "Delete" and len(task_list) > 0:
 
 
         splitted=task_list.splitlines()
@@ -152,37 +130,30 @@ while True:
         task_list=chgstr(splitted)
 
 
-    elif event == "Edit" and len(task_list) > 0:
+    if event == "Edit" and len(task_list):
+        
         edit_val = values["items"][0]
         splitted=task_list.splitlines()
         splitted.remove(values["items"][0])
         window.find_element('items').Update(values=splitted)
         window.find_element('_input_').Update(value=edit_val)
         window.find_element('Add To List').Update("Save")
-        task_list=chgstr(splitted)
-
-=======
-            sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)  
->>>>>>> cd7159ecae4844faa6aaba3d748d15955a9a4f65
+        task_list=chgstr(splitted)  
 
 
     if event == "Exit" or event == sg.WIN_CLOSED: 
-        filehandler = open('tasklist.txt','wb') #opens tasklist file to save the task_list inputted
-        pickle.dump(task_list,filehandler) #saves the the task_list inputted into the tasklist file
+        filehandler = open('tasklist.txt','wb') #opens tasklist file to save the tasks inputted
+        pickle.dump(task_list,filehandler) #saves the the tasks inputted into the tasklist file
         filehandler.close() #closes the file
         break #application stops
 
 
     if program_counter != 0 and len(task_list) == 0 and is_clear != True:
-<<<<<<< HEAD
-        window["_random_"].update("Congratulations, you have completed all your task_list!")
-=======
-        window["_output_"].update("Congratulations, you have completed all your tasks! \(0^0)/")
->>>>>>> cd7159ecae4844faa6aaba3d748d15955a9a4f65
+        window["_random_"].update("Congratulations, you have completed all your tasks! \(0^0)/")
 
     
     if program_counter != 0 and len(task_list) == 0 and is_clear == True:
-        window["_random_"].update("You have cleared all task_list. Please input task_list.")
+        window["_random_"].update("You have cleared all tasks. Please input tasks.")
 
 
 
