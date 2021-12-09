@@ -107,7 +107,7 @@ while True:
     elif event == "Complete Task" and program_counter == 0:
        sg.popup("Please input and randomize tasks before completing.",title='',button_color=('black','grey80'),font=fontt)
     elif event == "Complete Task" and len(task_list) == 0:
-        window["items"].update("Congratulations, you have completed all your tasks! *confetti*")
+        window["_random_"].update("Congratulations, you have completed all your tasks! *confetti*")
         
         
     if event == "Add To List" or event == "_input_" + "enter":
@@ -129,31 +129,34 @@ while True:
     if event=="items":
         click=True
 
-    if event == "Edit" and len(task_list) > 0 and click==True :
+    if event == "Edit" and len(task_list) > 0 :
+
+        if click==True:
+
         
-        edit_val = values["items"][0]
-        splitted=task_list.splitlines()
-        splitted.remove(values["items"][0])
-        window.find_element('items').Update(values=splitted)
-        window.find_element('_input_').Update(value=edit_val)
-        window.find_element('Add To List').Update("Save")
-        task_list=chgstr(splitted)
-        click=False
+            edit_val = values["items"][0]
+            splitted=task_list.splitlines()
+            splitted.remove(values["items"][0])
+            #window.find_element('items').Update(values=splitted)
+            window.find_element('_input_').Update(value=edit_val)
+            window.find_element('Add To List').Update("Save")
+            task_list=chgstr(splitted)
+            click=False
+        else:
+            sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
 
-    if event == "Delete" and len(task_list) > 0 and click ==True > 0:
+    if event == "Delete" and len(task_list) > 0 :
+
+        if click ==True:
+            splitted=task_list.splitlines()
+            splitted.remove(values["items"][0])
+            window.find_element('items').Update(values=splitted)
+            task_list=chgstr(splitted)
+            click=False
+        else:
+            sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
 
 
-        splitted=task_list.splitlines()
-        splitted.remove(values["items"][0])
-        window.find_element('items').Update(values=splitted)
-        task_list=chgstr(splitted)
-        click=False
-
-    if event == "Edit" and len(task_list)>0 and click!=True :
-        sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
-
-    if event == "Delete" and len(task_list)>0 and click!=True :
-        sg.popup("Please select a task from the list!",title='',button_color=('black','grey80'),font=fontt)
 
 
 
