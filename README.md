@@ -13,11 +13,11 @@ Once the hackathon is finished the app will be feature complete with a basic GUI
 If the project wins or gains traction, future prospects inclue creating a social platform based on the project where you could compete with your friends or people around you on whoever finishes the most tasks in a given timeframe. This will spur motivation among people to do their tasks in a healthy, competitive way. Stay tuned for updates. <br>
 
 ### Build Status
-Currently we have not started to code. Stay tuned for updates.
+Minimum Viable Product is now Live on with current version of v0.4.7. Adding more functionality/features so stay tuned!
 
 ### Made with
 Python - Coding Language <br>
-Ttinker - GUI <br>
+Ttinker/PySimpleGUI - GUI <br>
 Pickle - Current Storage Solution <br>
 Node.js - Proposed Online Data Storage Framework <br>
 SQL - Tentative Online Data Storage Solution <br>
