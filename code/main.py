@@ -120,7 +120,7 @@ while True:
                 task_list += input # Concatenates it into the task_list string
                 program_counter += 1
                 is_clear = False
-                window["items"].update(task_list.split())  
+                window["items"].update(task_list.splitlines())  
         else:
             sg.popup("Please input a valid task!",title='',button_color=('black','grey80'),font=fontt)
 
