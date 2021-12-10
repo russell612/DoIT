@@ -14,7 +14,7 @@ Once the hackathon is finished, the app will be feature complete with a basic GU
 ![alt text](https://user-images.githubusercontent.com/47515350/145440313-f58fe2f1-e7da-4ff5-abae-217b40a96503.png)<br>
 
 #### Demo
-Users can input their task of choice into the text field above. Then after that by either pressing 'Add To List' or the enter key, the task will be stored into the task list which is the menu above. <br><br>
+Users can input their task of choice into the text field above. Then after that by either pressing 'Add' or the enter key, the task will be stored into the task list which is the menu above. <br><br>
 Users are allowed to then edit the task that they have entered or delete them entirely. After all the tasks are inputed the user can generate a random task to do by pressing on the 'Randomize Task' button. After that is done the user is unable to randomize again until they have finished the task. A popup will prompt the user the finish the current task at hand. When users complete the task by pressing 'Completed Task', the task will be removed automatically from the list, and users are then allowed to randomize the next task.
 
 
